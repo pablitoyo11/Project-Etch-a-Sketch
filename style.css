@@ -1,0 +1,16 @@
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: coral;
+    color: white;
+  }
+
+
+
+.grid-item-active {
+    background-color: rgb(208, 240, 24);
+    color: rgb(0, 0, 0);
+  }
+
