@@ -18,30 +18,27 @@ let GridItem = SketchContainer.getElementsByClassName("grid-item");
 
 function CreateGrid(size){
     DivGrid="";
-    griditemnumer=0;
+//    griditemnumer=0;  // changed for size**2 below for calculating % sieze of each square
     for(var i = 0; i < size; i++) {
         for(var u = 0; u < size; u++) {
-            griditemnumer++;
-            DivGrid=DivGrid+`<div class="grid-item">`+(griditemnumer)+`</div>`;
-            console.log("por aca voy",griditemnumer);
+//            griditemnumer++; // changed for size**2 below for calculating % sieze of each square
+            DivGrid=DivGrid+`<div class="grid-item"></div>`;
+
+//            DivGrid=DivGrid+`<div class="grid-item">`+/(griditemnumer)+`</div>`; //was ading the square number to each pixel, unnecesary but i liked each pixel with their respective number
         };
-        console.log(griditemnumer);
     };
-    console.log("termino",griditemnumer);
 
     SketchContainer.innerHTML = DivGrid;
 
     let GridItem = SketchContainer.getElementsByClassName("grid-item");
-    for (let index = 0; index < griditemnumer; index++) {
-        let BasisPercent=100/(Math. sqrt(griditemnumer));
+    for (let index = 0; index < size**2; index++) {
+        let BasisPercent=100/(Math. sqrt(size**2));
         BasisPercent=BasisPercent+"%";
         GridItem[index].style.flexBasis=BasisPercent; 
-        console.log(griditemnumer,"al porcentjae",BasisPercent);
 
     }
     AddingListeners();
 };
-
 
 
 function MouseIn (){
@@ -65,3 +62,12 @@ for(var i = 0; i < GridItem.length; i++) {
 };
 
 CreateGrid(4);
+
+function ChangeSize(){
+    size = prompt("Insert a grid size, max size= 100");
+    size<=100 ? CreateGrid(size) : alert("please insert a smaller number");
+        
+}
+
+document.getElementById("ButtonChangeSize").addEventListener("click", ChangeSize);
+
